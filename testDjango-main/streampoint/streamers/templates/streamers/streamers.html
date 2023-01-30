@@ -14,13 +14,16 @@
 <body>
 
         <main>
+            {% for el in point %}
             <span class = "logost" >Топ стримеров платформы</span>
-            <p><img src="{% static 'streamers/img/zloyn.png' %}" alt="logo" align="left">Подписаться</p>
+            <p><img src="{% static 'streamers/img/zloyn.png' %}" alt="logo" >Подписаться {{el.points}}</p>
             <p class="name">ZLOYN</p>
-            <p><img src="{% static 'streamers/img/buster.png' %}" alt="logo" align="left" > Подписаться</p>
+            <p><img src="{% static 'streamers/img/buster.png' %}" alt="logo"  > Подписаться {{el.points}}</p>
             <p class="name">BUSTER</p>
-            <p><img src="{% static 'streamers/img/evelone192.png' %}" alt="logo" align="left">Подписаться</p>
-            <p class="name" >EVELONE192</p>
+            <p><img src="{% static 'streamers/img/evelone192.png' %}" alt="logo">Подписаться {{el.points}}</p>
+            <p class="name" ></p>
+            {% endfor %}
+
         </main>
          <!-- <img src="{% static 'streamers/img/back.png' %}" class="background" /> -->
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render
-
+from .models import HisStreamers
 def stream(request):
-    return render (request, 'streamers/streamers.html')
+    point = HisStreamers.objects.all()
+    return render (request, 'streamers/streamers.html', {'point': point})
