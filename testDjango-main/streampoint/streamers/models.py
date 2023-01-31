@@ -1,11 +1,12 @@
 from django.db import models
-
+from lkusers.models import ContribUsers
 
 class AllStreamers(models.Model):
-    name = models.CharField("Имя", max_length=100)
-    photo = models.ImageField("Фото стримера", upload_to="strim_image/")
-    url_twitch = models.URLField("Ссылка на twitch", max_length=200)
+    name = models.CharField("Имя стримера", max_length=200)
+    photo = models.ImageField("Фото", upload_to="photostream/")
+    urltwitch = models.URLField("Ссылка на твич", max_length=200)
     shop = models.BooleanField("Наличие магазина", default=False)
+    user = models.ForeignKey(ContribUsers, on_delete=models.CASCADE)
 
-
-
+    class Meta:
+        verbose_name = "Все стримеры"

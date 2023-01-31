@@ -1,11 +1,12 @@
 from django.db import models
 
-class ShopStreamer(models.Model):
-    price = models.IntegerField("Цена товара", null=True)
-    title = models.CharField("Название товара", max_length=200)
-    photo = models.ImageField("Фото товара", upload_to="shop_image/")
+
+class ShopStreamers(models.Model):
+    namestreamers = models.CharField("Имя стримера", max_length=200, help_text="Введите имя блогера")
+    name = models.CharField("Товар", max_length=200, help_text="Наименование товара")
+    price = models.IntegerField("цена товара")
+    photoproduct = models.ImageField("Фото товара", upload_to="photoproduct/", help_text="фото товара")
+    photostreamers = models.ImageField("Фото блогера", upload_to="photostreamers/",help_text="Фото стримера")
 
     class Meta:
-        verbose_name = "Магазин Стримера"
-        verbose_name_plural = "Магазины стримеров"
-
+        verbose_name = "Магазин стримера"
