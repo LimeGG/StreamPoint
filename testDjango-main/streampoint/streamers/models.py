@@ -1,4 +1,5 @@
 from django.db import models
+
 from lkusers.models import ContribUsers
 
 class AllStreamers(models.Model):
@@ -10,3 +11,4 @@ class AllStreamers(models.Model):
 
     class Meta:
         verbose_name = "Все стримеры"
+

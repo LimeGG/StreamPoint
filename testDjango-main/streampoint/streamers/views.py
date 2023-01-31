@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import AllStreamers
 def stream(request):
-    #point = HisStreamers.objects.all()
-    return render(request, 'streamers/streamers.html')
+    jpg = AllStreamers.objects.all()
+    return render(request, 'streamers/streamers.html', {'jpg': jpg})

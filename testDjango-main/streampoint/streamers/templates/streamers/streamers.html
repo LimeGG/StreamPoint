@@ -14,13 +14,13 @@
 <body>
 
         <main>
-            {% for el in point %}
+            {% for el in jpg %}
             <span class = "logost" >Топ стримеров платформы</span>
-            <p><img src="{% static 'streamers/img/zloyn.png' %}" alt="logo" >Подписаться {{el.points}}</p>
+            <p><img src = '{{el.photo}}'></p>
             <p class="name">ZLOYN</p>
-            <p><img src="{% static 'streamers/img/buster.png' %}" alt="logo"  > Подписаться {{el.points}}</p>
+            <p><img src="{% static 'streamers/img/buster.png' %}" alt="logo"  > Подписаться</p>
             <p class="name">BUSTER</p>
-            <p><img src="{% static 'streamers/img/evelone192.png' %}" alt="logo">Подписаться {{el.points}}</p>
+            <p><img src="{% static 'streamers/img/evelone192.png' %}" alt="logo">Подписаться</p>
             <p class="name" ></p>
             {% endfor %}
 
