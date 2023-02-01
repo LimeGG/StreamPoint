@@ -7,8 +7,8 @@ class AllStreamers(models.Model):
     photo = models.ImageField("Фото", upload_to="photostream/")
     urltwitch = models.URLField("Ссылка на твич", max_length=200)
     shop = models.BooleanField("Наличие магазина", default=False)
-    user = models.ForeignKey(ContribUsers, on_delete=models.CASCADE)
+    user = models.ForeignKey(ContribUsers, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = "Все стримеры"
-
+        verbose_name_plural = "Все стримеры"

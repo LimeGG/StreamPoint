@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import AllStreamers
 
-# Register your models here.
+
+admin.site.register(AllStreamers)

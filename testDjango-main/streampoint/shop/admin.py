@@ -1,3 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
+from .models import  ShopStreamers, AddProduct
+admin.site.register(ShopStreamers)
+admin.site.register(AddProduct)

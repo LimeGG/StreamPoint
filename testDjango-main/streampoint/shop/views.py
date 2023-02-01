@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from .models import *
+
 
 def index(request):
-    return render(request, 'main/index.html')
+    product = AddProduct.objects.all()
+    photostreamers = ShopStreamers.objects.all()
+    return render(request, 'shop/shop.html', {"product": product, "photostreamers": photostreamers})

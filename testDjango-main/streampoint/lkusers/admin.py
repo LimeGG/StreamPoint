@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import ContribUsers, HisStreamers
 
-# Register your models here.
+admin.site.register(ContribUsers)
+admin.site.register(HisStreamers)
