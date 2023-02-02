@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import  ShopStreamers, AddProduct
-admin.site.register(ShopStreamers)
+from .models import AddProduct
+
+
 admin.site.register(AddProduct)

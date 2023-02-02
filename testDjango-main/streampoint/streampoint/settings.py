@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "main",
     "registration",
-    "shop",
+    "shop.apps.ShopConfig",
     "streamers",
     "lkusers",
     'django.contrib.admin',

@@ -13,9 +13,10 @@
 <body>
 
         <main>
+            <h2 class = "logost" >Топ стримеров платформы</h2>
             {% for el in jpg %}
-            <span class = "logost" >Топ стримеров платформы</span>
-            <p><img src = '{{el.photo}}'><button><a href="{{el.urltwitch}}">Подписаться</a></button></p>
+            
+            <p><img src = '{{el.photo.url}}' width="250" height="250"><button><a href="{{el.urltwitch}}">Подписаться</a></button></p>
             <p class="name">{{el.name}}</p>
             {% endfor %}
 
