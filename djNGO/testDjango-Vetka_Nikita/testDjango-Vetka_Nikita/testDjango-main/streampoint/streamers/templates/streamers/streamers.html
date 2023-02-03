@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ <!-- <div class="background">
+  <img src="{% static 'streamers/img/back.png' %}" alt="background" />
+</div> -->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'streamers/css/streamers.css' %}">
+    <h1>Наши Стримеры</h1>
+</head>
+<body>
+
+        <main>
+            {% for el in jpg %}
+            <span class = "logost" >Топ стримеров платформы</span>
+            <p><img src = '{{el.photo}}'><button><a href="{{el.urltwitch}}">Подписаться</a></button></p>
+            <p class="name">{{el.name}}</p>
+            {% endfor %}
+
+        </main>
+         <!-- <img src="{% static 'streamers/img/back.png' %}" class="background" /> -->
+
+
+
+</body>
+</html>
