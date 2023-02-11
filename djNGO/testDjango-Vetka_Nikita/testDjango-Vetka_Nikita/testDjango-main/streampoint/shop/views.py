@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import *
+from streamers.models import AllStreamers
 
-
-def index(request):
-    return render(request, "main/index.html")
+def stream(request):
+    jpg = AllStreamers.objects.all()
+    return render(request, 'shop/streamers.html', {'jpg': jpg})
 
 
 def show_shop(request, streamer_id):

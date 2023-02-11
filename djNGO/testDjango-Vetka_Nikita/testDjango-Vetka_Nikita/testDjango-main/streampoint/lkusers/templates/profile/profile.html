@@ -21,9 +21,8 @@
     </style>
 </head>
 <body>
-    {%if name.user.username == name.user.username %}
         <h1>Profile</h
-        <center><h2>{{ name.user.username }}</h2></center>
+        <center><h2>{{ name.username }}</h2></center>
         <ul class="hr">
             {% for i in streamers %}
             <li>
@@ -35,6 +34,5 @@
             </li>
             {% endfor %}
         </ul>
-    {% endif %}
 </body>
 </html>
