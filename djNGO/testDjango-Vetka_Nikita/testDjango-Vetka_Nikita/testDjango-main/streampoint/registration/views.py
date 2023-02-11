@@ -10,7 +10,7 @@ def reg_user(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('login/')
     else:
         form = UserRegistrationForm()
     context = {'form': form}
@@ -24,7 +24,7 @@ def login(requst):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(requst, user)
-                return redirect('/')
+                return redirect('Profile')
     else:
         form = UserLoginForm()
     context = {'form': form}
