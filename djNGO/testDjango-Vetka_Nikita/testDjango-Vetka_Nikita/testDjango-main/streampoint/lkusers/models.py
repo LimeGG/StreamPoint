@@ -4,6 +4,16 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.urls import reverse
 from streamers.models import AllStreamers
+from shop.models import AddProduct
+
+class UserBuy(models.Model):
+        user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+        product = models.ForeignKey(AddProduct, on_delete=models.CASCADE, blank=True, null=True)
+        telega = models.CharField("телеграм пользователя", max_length=200, blank=True, null=True)
+
+        class Meta:
+            verbose_name = "Товар пользователя"
+            verbose_name_plural = "Товары Пользователей"
 
 class ContribUsers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -23,6 +33,7 @@ class HisStreamers(models.Model):
     points = models.IntegerField("Очки за блогера", blank=True, null=True)
     streamers = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
 
+
     class Meta:
         verbose_name = "Стримеры пользователя"
         verbose_name_plural = "Стримеры пользователей"
@@ -32,6 +43,7 @@ class HisStreamers(models.Model):
 
     def get_absolute_url(self):
         return reverse('streamer', kwargs={'user': self.pk})
+
 
 
 @receiver(post_save, sender=User)
