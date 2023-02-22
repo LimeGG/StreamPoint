@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import AddProduct
 
-# Register your models here.
+
+@admin.register(AddProduct)
+class AddProduct(admin.ModelAdmin):
+    list_display = ("nameproduct", "price", "streamer")
+    list_filter = ("streamer",)

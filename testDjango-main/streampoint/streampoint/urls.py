@@ -3,13 +3,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('main.urls')),
-    path('lkusers/', include('lkusers.urls')),
-    path('registration/', include('registration.urls')),
-    path('shop/', include('shop.urls')),
-    path('streamers/', include('streamers.urls'))
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+                  path('admin/', admin.site.urls),
+                  path('', include('main.urls'), name="home"),
+                  path('lkusers/', include('lkusers.urls')),
+                  path('registration/', include('registration.urls')),
+                  path('shop/', include('shop.urls')),
+                  path('streamers/', include('streamers.urls'))
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

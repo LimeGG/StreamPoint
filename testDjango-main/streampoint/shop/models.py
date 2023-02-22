@@ -1,12 +1,20 @@
 from django.db import models
+from django.urls import reverse
+from streamers.models import AllStreamers
 
 
-class ShopStreamers(models.Model):
-    namestreamers = models.CharField("Имя стримера", max_length=200, help_text="Введите имя блогера")
-    name = models.CharField("Товар", max_length=200, help_text="Наименование товара")
-    price = models.IntegerField("цена товара")
+class AddProduct(models.Model):
+    nameproduct = models.CharField("Наименование товара", max_length=200)
     photoproduct = models.ImageField("Фото товара", upload_to="photoproduct/", help_text="фото товара")
-    photostreamers = models.ImageField("Фото блогера", upload_to="photostreamers/",help_text="Фото стримера")
+    price = models.IntegerField("цена товара")
+    streamer = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
-        verbose_name = "Магазин стримера"
+        verbose_name = "Товар"
+        verbose_name_plural = "Товары"
+
+    def __str__(self):
+        return self.nameproduct
+
+    def get_absolute_url(self):
+        return reverse('shop', kwargs={'streamer_id': self.pk})

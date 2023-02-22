@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import AllStreamers
 
-# Register your models here.
+
+
+@admin.register(AllStreamers)
+class AllStreamersAdmin(admin.ModelAdmin):
+    list_display = ("streamer", "name", "urltwitch")
+

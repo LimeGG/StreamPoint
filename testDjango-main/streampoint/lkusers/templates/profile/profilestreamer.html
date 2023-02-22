@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profilee</title>
+    <style>
+        .point{
+            border-top: 4px solid #648880;
+            padding: 40px 0 22px 0;
+            float: left;
+        }
+       ul.hr {
+        /* Обнуляем значение отступов и полей */
+        margin: 0; padding: 0;
+       }
+       ul.hr li {
+        display: inline-block; /* Строчно-блочный элемент */
+        border: 1px solid #000; /* Рамка вокруг текста */
+        padding: 3px; /* Поля вокруг текста */
+       }
+    </style>
+</head>
+<body>
+        <h1>ProfileStreamer</h
+        <center><h2>{{ namm.username }}</h2></center>
+        <ul class="hr">
+            {% for i in streamer %}
+                <li>
+                    <h2>{{i.name}}</h2>
+                    <h2>{{i.urltwitch}}</h2>
+                    <img src="{{i.photo.url}}" width="100" height="100">
+                    <button><a href="/">Купить</a></button></p>
+                </li>
+            {% endfor %}
+        </ul>
+</body>
+</html>
