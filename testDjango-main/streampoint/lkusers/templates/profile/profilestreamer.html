@@ -3,35 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Profilee</title>
-    <style>
-        .point{
-            border-top: 4px solid #648880;
-            padding: 40px 0 22px 0;
-            float: left;
-        }
-       ul.hr {
-        /* Обнуляем значение отступов и полей */
-        margin: 0; padding: 0;
-       }
-       ul.hr li {
-        display: inline-block; /* Строчно-блочный элемент */
-        border: 1px solid #000; /* Рамка вокруг текста */
-        padding: 3px; /* Поля вокруг текста */
-       }
-    </style>
+
 </head>
 <body>
         <h1>ProfileStreamer</h
-        <center><h2>{{ namm.username }}</h2></center>
-        <ul class="hr">
+        <center><h2>{{ name.username }}</h2></center>
+
             {% for i in streamer %}
                 <li>
                     <h2>{{i.name}}</h2>
                     <h2>{{i.urltwitch}}</h2>
                     <img src="{{i.photo.url}}" width="100" height="100">
-                    <button><a href="/">Купить</a></button></p>
+                    <button><a href="{% url 'myshopp' %}">мой магазин</a></button></p>
                 </li>
             {% endfor %}
-        </ul>
+            <h2>Покупки в моем магазине</h2>
+            {% for b in buy %}
+                <li>
+                    <h2>{{b.user.user.username}}</h2>
+                    <h2>{{b.user.telegramm}}</h2>
+                    <h2>{{b.product.nameproduct}}</h2>
+                    <img src ="{{b.product.photoproduct.url}}" width="100" height="100">
+                    <h2>{{b.product.price}}</h2>
+                </li>
+
+
+            {% endfor %}
+
 </body>
 </html>
