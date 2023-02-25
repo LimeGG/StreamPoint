@@ -8,7 +8,7 @@ class BuyproductForms(forms.ModelForm):
         fields = []
 
 
-# class BalanceCheckForms(forms.ModelForm):
-#     class Meta:
-#         model = HisStreamers
-#         fields = ()
+class BalanceCheckForms(forms.ModelForm):
+    class Meta:
+        model = HisStreamers
+        fields = ()

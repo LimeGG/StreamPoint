@@ -9,6 +9,7 @@
     <form method="post", enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        {{ form1.as_p }}
         <button type="submit">Купить</button></form>
 </body>
 </html>

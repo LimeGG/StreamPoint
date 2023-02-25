@@ -21,8 +21,8 @@ class ContribUsers(models.Model):
 
 class HisStreamers(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    points = models.IntegerField("Очки за блогера", blank=True, null=True, default=0)
-    streamers = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True, default="telegram")
+    points = models.IntegerField("Очки за блогера", blank=True, null=True)
+    streamers = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         verbose_name = "Стримеры пользователя"
@@ -37,7 +37,7 @@ class HisStreamers(models.Model):
 
 class UserBuy(models.Model):
     user = models.ForeignKey("ContribUsers", on_delete=models.CASCADE, blank=True, null=True)
-    product = models.ForeignKey(AddProduct, on_delete=models.CASCADE, blank=True, null=True)
+    product = models.ForeignKey(AddProduct, on_delete=models.CASCADE, blank=True, null=True)#on_delete=models.DO_NOTHING
     streamer = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
