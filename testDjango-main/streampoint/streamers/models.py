@@ -1,6 +1,5 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.db import models
-from django.contrib.auth.models import Permission
 from django.urls import reverse
 
 
@@ -25,3 +24,6 @@ class AllStreamers(models.Model):
 
     def get_absolute_url(self):
         return reverse('streamer', kwargs={'streamer_id': self.pk})
+
+
+

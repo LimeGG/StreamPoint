@@ -4,4 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.stream, name ="Shop"),
     path('<int:streamer_id>', views.show_shop,name="Shopstreamer"),
+    path('buy/<int:pk>',views.buyproduct, name="buyproduct"),
+
 ]

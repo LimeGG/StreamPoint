@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удалить товар</title>
+</head>
+<body>
+  <h1>Удалить товар</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn_success" type="submit">Удалить</button>
+    </form>
+</body>
+</html>

@@ -5,7 +5,7 @@ from streamers.models import AllStreamers
 from django.contrib.auth.models import User
 from shop.models import AddProduct
 from .forms import *
-
+from django.views.generic import DeleteView
 
 def show_profile(request):
     user_id = request.user.id
@@ -54,3 +54,9 @@ def addproduct(request):
     else:
         form = AddproductForms()
     return render(request, "profile/addproduct.html", {"form": form})
+
+
+class DeleteProduct(DeleteView):
+    model = AddProduct
+    template_name = "profile/deleteproduct.html"
+    success_url = "/lkusers/myshop"

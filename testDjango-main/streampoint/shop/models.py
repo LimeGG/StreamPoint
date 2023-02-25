@@ -17,4 +17,4 @@ class AddProduct(models.Model):
         return self.nameproduct
 
     def get_absolute_url(self):
-        return reverse('shop', kwargs={'streamer_id': self.pk})
+        return reverse('shop', kwargs={'nameproduct': self.pk})

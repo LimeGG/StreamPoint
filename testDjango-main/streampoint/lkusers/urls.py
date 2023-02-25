@@ -6,5 +6,6 @@ urlpatterns = [
     #path('', views.index),
     path("", views.show_profile, name="Profile"),
     path("myshop", views.show_shopstreamer, name="myshopp"),
-    path("addproduct", views.addproduct, name = "addproduct")
+    path("addproduct", views.addproduct, name="addproduct"),
+    path("myshop/delete/<int:pk>", views.DeleteProduct.as_view(), name="delete-product")
 ]
