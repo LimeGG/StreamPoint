@@ -41,7 +41,6 @@ def buyproduct(request, pk):
             price_ = price1[0]
             price = price_.price
             buyproduct1.user_id = user_id
-            print(streamer_id)
             buyproduct1.product_id = pk
             buyproduct1.streamer_id = streamer_id
             points1 = HisStreamers.objects.filter(streamers_id=streamer_id, user_id=user_id)
