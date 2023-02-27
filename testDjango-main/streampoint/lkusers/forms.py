@@ -6,3 +6,9 @@ class AddproductForms(forms.ModelForm):
     class Meta:
         model = AddProduct
         fields = ["nameproduct", "photoproduct", "price"]
+
+
+class DeleteProductforms(forms.ModelForm):
+    class Meta:
+        model = AddProduct
+        fields = ()

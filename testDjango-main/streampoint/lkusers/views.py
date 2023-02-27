@@ -32,7 +32,7 @@ def show_shopstreamer(request):
     user_id = request.user.id
     stream_name = AllStreamers.objects.get(streamer=user_id)
     id_stream = stream_name.pk
-    product = AddProduct.objects.filter(streamer_id=id_stream)
+    product = AddProduct.objects.filter(streamer_id=id_stream, published=1)
     return render(request, "profile/streamersshop.html",
                   {"stream_name": stream_name, "product": product})
 
@@ -56,7 +56,30 @@ def addproduct(request):
     return render(request, "profile/addproduct.html", {"form": form})
 
 
-class DeleteProduct(DeleteView):
-    model = AddProduct
-    template_name = "profile/deleteproduct.html"
-    success_url = "/lkusers/myshop"
+def deleteproduct(request, pk):
+    user_id = request.user.id
+    # stream_name = AllStreamers.objects.get(streamer=user_id)
+    # id_stream = stream_name.pk
+    print(type(pk))
+    if request.method == "POST":
+        product = AddProduct.objects.get(id=pk)
+        form = DeleteProductforms(request.POST, instance=product)
+        print(type(pk))
+        if form.is_valid():
+            delete = form.save(commit=False)
+            delete.published = 0
+            try:
+                form.save()
+                return redirect("myshopp")
+            except:
+                form.add_error(None, "Ошибка добавления товара")
+    else:
+        form = DeleteProductforms()
+    return render(request, "profile/deleteproduct.html", {"form": form})
+
+
+
+# class DeleteProduct(DeleteView):
+#     model = AddProduct
+#     template_name = "profile/deleteproduct.html"
+#     success_url = "/lkusers/myshop"

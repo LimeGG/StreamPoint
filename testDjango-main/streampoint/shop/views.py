@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import *
 from streamers.models import AllStreamers
@@ -14,12 +13,16 @@ def stream(request):
 
 def show_shop(request, streamer_id):
     user_id = request.user.id
-    points1 = HisStreamers.objects.filter(streamers_id=streamer_id, user_id=user_id)
+    streamer = AllStreamers.objects.get(id=streamer_id)
+    try:
+        points1 = HisStreamers.objects.filter(streamers_id=streamer_id, user_id=user_id)
+        points = points1[0]
+    except:
+        points = 0
     product = AddProduct.objects.filter(streamer_id=streamer_id)
-    name = product[0]
-    points = points1[0]
+
     return render(request, "shop/shop.html",
-                  {"product": product, "streamer": streamer_id, "name": name, "points": points})
+                  {"product": product, "streamer": streamer, "points": points})
 
 
 def buyproduct(request, pk):

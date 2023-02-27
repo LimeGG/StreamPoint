@@ -8,6 +8,8 @@ class AddProduct(models.Model):
     photoproduct = models.ImageField("Фото товара", upload_to="photoproduct/", help_text="фото товара")
     price = models.IntegerField("цена товара")
     streamer = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
+    published = models.BooleanField("Удалить товар", default=1)
+
 
     class Meta:
         verbose_name = "Товар"
