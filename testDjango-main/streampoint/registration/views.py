@@ -5,6 +5,9 @@ from registration.forms import UserLoginForm
 from django.urls import reverse
 from registration.forms import UserRegistrationForm
 
+
+
+
 def reg_user(request):
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)

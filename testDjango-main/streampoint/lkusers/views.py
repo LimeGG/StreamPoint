@@ -37,6 +37,20 @@ def show_shopstreamer(request):
                   {"stream_name": stream_name, "product": product})
 
 
+def addPh_TG(request): #Добавление фото и тг в профиль
+    user_id = request.user.id
+    if request.method == 'POST':
+        form = addPhoto_Telega(request.POST, request.FILES, instens=user_id)
+        con = {'form': form}
+        if form.if_valid():
+            try:
+                form.save()
+                return redirect('Profile')
+            except:
+                form.add_error(None, "Ошибка добавления данных")
+
+    return render(request, "profile/profile.html", con)
+
 def addproduct(request):
     user_id = request.user.id
     stream_name = AllStreamers.objects.get(streamer=user_id)
