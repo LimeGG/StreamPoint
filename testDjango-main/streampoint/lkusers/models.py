@@ -11,6 +11,7 @@ class ContribUsers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     photouser = models.ImageField("Фото пользователя", upload_to="photousers/", null=True, blank=True)
     telegramm = models.CharField("телегарм", max_length=200, help_text="Телеграм пользователя")
+
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
@@ -21,7 +22,7 @@ class ContribUsers(models.Model):
 
 class HisStreamers(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
-    points = models.IntegerField("Очки за блогера", blank=True, null=True)
+    points = models.IntegerField("Очки за блогера", blank=True, null=True, default=0)
     streamers = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
@@ -37,7 +38,8 @@ class HisStreamers(models.Model):
 
 class UserBuy(models.Model):
     user = models.ForeignKey("ContribUsers", on_delete=models.CASCADE, blank=True, null=True)
-    product = models.ForeignKey(AddProduct, on_delete=models.CASCADE, blank=True, null=True)#on_delete=models.DO_NOTHING
+    product = models.ForeignKey(AddProduct, on_delete=models.CASCADE, blank=True,
+                                null=True)  # on_delete=models.DO_NOTHING
     streamer = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
@@ -47,10 +49,18 @@ class UserBuy(models.Model):
 
 @receiver(post_save, sender=User)
 def created_user_profile(sender, instance, created, **kwargs):
+    # streamers = AllStreamers.objects.all()
     if created:
         ContribUsers.objects.create(user=instance)
+    # for streamer in streamers:
+    #     try:
+    #         if created:
+    #             HisStreamers.objects.create(user=instance, streamers_id=streamer.id)
+    #     except:
+    #         break
 
 
 @receiver
 def save_user_profile(sender, instance, **kwargs):
     instance.ContribUsers.save()
+    # instance.HisStreamers.save()
