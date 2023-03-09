@@ -8,5 +8,5 @@ urlpatterns = [
     path("myshop", views.show_shopstreamer, name="myshopp"),
     path("addproduct", views.addproduct, name="addproduct"),
     path("myshop/delete/<int:pk>", views.deleteproduct, name="delete-product"),
-    path("api/points/create", views.UserApi.as_view()),
+    path("api/points/create/", views.UserApi.as_view()),
 ]

@@ -82,8 +82,8 @@ class UserApi(APIView):
 
     def post(self, request):
         user_id = request.user.id
-        name = request.data.get("name")
-        points = request.data.get("Points")
+        name = request.data.get("streamerName")
+        points = request.data.get("points")
         try:
             streamers = AllStreamers.objects.get(name=name)
         except:
@@ -92,15 +92,14 @@ class UserApi(APIView):
             update_points = HisStreamers.objects.get(streamers_id=streamers.id, user_id=user_id)
             update_points.points += points
             update_points.save()
-            print(update_points.points)
         except:
             HisStreamers.objects.create(
                 user_id=user_id,
                 streamers_id=streamers.id,
                 points=points
             )
-            HisStreamers.save()
-        print(request.data, name, streamers.id, user_id)
+            sav = HisStreamers.objects.get(streamers_id=streamers.id, user_id=user_id)
+            sav.save()
         return Response({'user_id': user_id})
 
 
