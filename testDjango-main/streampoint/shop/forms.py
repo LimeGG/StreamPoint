@@ -12,3 +12,5 @@ class BalanceCheckForms(forms.ModelForm):
     class Meta:
         model = HisStreamers
         fields = ()
+
+

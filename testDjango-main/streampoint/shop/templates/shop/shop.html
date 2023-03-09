@@ -22,9 +22,10 @@
 </head>
 <body>
     <p><center><h1>Магазин</h1></center></p>
+<!--    <h2>{{ points }}</h2>-->
     <h2>{{points.points}}</h2>
-    <center><h2>{{ name.streamer.name }}</h2></center>
-    <center><img src="{{name.streamer.photo.url}}" width="200" height="180"></center>
+    <center><h2>{{ streamer.name }}</h2></center>
+    <center><img src="{{streamer.photo.url}}" width="200" height="180"></center>
     <ul class="hr">
         {% for i in product %}
         <li>
