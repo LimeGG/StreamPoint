@@ -23,6 +23,14 @@
 <body>
         <h1>Profileee</h1>
         <center><h2>{{ name.username }}</h2></center>
+        <center>
+       <form method="post", enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+        </center>
+
+
         <ul class="hr">
             {% for i in streamers %}
             <li>
