@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
     'rest_framework.authtoken',
     'corsheaders',
     'djoser'
@@ -94,7 +95,8 @@ DATABASES = {
 }
 CSRF_TOKEN_LENGTH = 64
 CSRF_TRUSTED_ORIGINS = [
-    'chrome-extension://dbcnmpbdcdemockihjkpaoakdhbkppdh'
+    'chrome-extension://dbcnmpbdcdemockihjkpaoakdhbkppdh',
+    'chrome-extension://ompfohbkkggelbogeglbhimopkhinedp'
 ]
 
 REST_FRAMEWORK = {
@@ -132,7 +134,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+SESSION_COOKIE_SAMESITE = None
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 

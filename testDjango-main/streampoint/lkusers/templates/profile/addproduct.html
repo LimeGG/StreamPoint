@@ -8,6 +8,7 @@
     <form action="{% url 'addproduct' %}" method="post", enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+        {{ form.related_model_form.as_p }}
         <button type="submit">Отправить</button>
     </form>
 </body>
