@@ -13,6 +13,8 @@ from streamers.models import AllStreamers
 from .forms import *
 from .models import *
 from django.views import View
+from rest_framework import views, response
+from rest_framework.authtoken.models import Token
 import json
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.http import JsonResponse
@@ -114,35 +116,35 @@ def MyView(request):
     return response
 
 
-class UserApi(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = (IsAuthenticated,)
+# class UserApi(APIView):
+#     authentication_classes = [TokenAuthentication]
+#     permission_classes = (IsAuthenticated,)
+#
+#     def post(self, request):
+#         user_id = request.user.id
+#         name = request.data.get("streamer")
+#         points = request.data.get("points")
+#         nameuser = request.data.get("user_id")
+#         print(name, points, user_id, nameuser)
+#         # try:
+#         #     streamers = AllStreamers.objects.get(name=name)
+#         # except:
+#         #     return Response({"error": 233})
+#         # try:
+#         #     update_points = HisStreamers.objects.get(streamers_id=streamers.id, user_id=nameuser)
+#         #     update_points.points += points
+#         #     update_points.save()
+#         # except:
+#         #     HisStreamers.objects.create(
+#         #         user_id=nameuser,
+#         #         streamers_id=streamers.id,
+#         #         points=points
+#         #     )
+#         #     sav = HisStreamers.objects.get(streamers_id=streamers.id, user_id=nameuser)
+#         #     sav.save()
+#         return Response(request.data)
 
-    def post(self, request):
-        user_id = request.user.id
-        name = request.data.get("streamer")
-        points = request.data.get("points")
-        nameuser = request.data.get("user_id")
-        print(name, points, user_id, nameuser)
-        # try:
-        #     streamers = AllStreamers.objects.get(name=name)
-        # except:
-        #     return Response({"error": 233})
-        # try:
-        #     update_points = HisStreamers.objects.get(streamers_id=streamers.id, user_id=nameuser)
-        #     update_points.points += points
-        #     update_points.save()
-        # except:
-        #     HisStreamers.objects.create(
-        #         user_id=nameuser,
-        #         streamers_id=streamers.id,
-        #         points=points
-        #     )
-        #     sav = HisStreamers.objects.get(streamers_id=streamers.id, user_id=nameuser)
-        #     sav.save()
-        return Response(request.data)
 
 
-@ensure_csrf_cookie
-def get_csrf_token(request):
-    return JsonResponse({'csrf_token': request.COOKIES.get('csrftoken')})
+
+
