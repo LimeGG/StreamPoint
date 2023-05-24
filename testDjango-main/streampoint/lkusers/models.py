@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
@@ -11,6 +12,7 @@ class ContribUsers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     photouser = models.ImageField("Фото пользователя", upload_to="photousers/", null=True, blank=True)
     telegramm = models.CharField("телегарм", max_length=200, help_text="Телеграм пользователя")
+    ref = models.IntegerField("Рефералы", blank=True, null=True)
 
     class Meta:
         verbose_name = "Пользователь"
@@ -18,6 +20,32 @@ class ContribUsers(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+class Allachievements(models.Model):
+    name = models.CharField("Имя", max_length=200)
+    imagelogo = models.ImageField("Фото достижения", upload_to="photooachivment/", null=True, blank=True)
+    reward = models.IntegerField("Баллы за достижение", default=0)
+    conditions = models.CharField("условие получения достижения", max_length=200)
+
+    class Meta:
+        verbose_name = "Все достижения"
+        verbose_name_plural = "Все достижения"
+
+    def __str__(self):
+        return str(self.name)
+
+class Achievements(models.Model):
+    achievement = models.ForeignKey(Allachievements, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "достижения пользователя"
+        verbose_name_plural = "достижения пользователя"
+
+    # def __str__(self):
+    #     return str(self.achievement)
+
+
 
 
 class HisStreamers(models.Model):

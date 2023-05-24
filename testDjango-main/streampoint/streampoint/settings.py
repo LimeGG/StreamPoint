@@ -90,13 +90,18 @@ WSGI_APPLICATION = 'streampoint.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'db.sqlite3',
+        # 'USER': 'NikitaAdmin',
+        # 'PASSWORD': '',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
+
 }
 CSRF_TOKEN_LENGTH = 64
 CSRF_TRUSTED_ORIGINS = [
     'chrome-extension://dbcnmpbdcdemockihjkpaoakdhbkppdh',
-    'chrome-extension://ompfohbkkggelbogeglbhimopkhinedp'
+    'chrome-extension://meegonoemkchbaeldeknapcale'
 ]
 
 REST_FRAMEWORK = {
