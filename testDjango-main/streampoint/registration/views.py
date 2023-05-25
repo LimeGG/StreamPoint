@@ -1,11 +1,26 @@
 from django.shortcuts import render, HttpResponsePermanentRedirect, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
-from registration.forms import UserLoginForm
 from django.urls import reverse
-from registration.forms import UserRegistrationForm
+from .forms import UserRegistrationForm, StreamerRegistrationForm, UserLoginForm
+from django.contrib.auth.models import Group
+from streamers.models import AllStreamers
 
 
+def reg_streamer(request):
+    if request.method == 'POST':
+        form = StreamerRegistrationForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            group = Group.objects.get(name='Streamer')
+            user.groups.add(group)
+            streamer = AllStreamers.objects.create(streamer=user, name=form.cleaned_data['namestreamer'], urltwitch=form.cleaned_data['twitch_url'], photo=form.cleaned_data['photo'])
+            streamer.save()
+            return redirect(login)
+    else:
+        form = StreamerRegistrationForm()
+    context = {'form': form}
+    return render(request, 'registration/registrstreamer.html', context)
 
 
 def reg_user(request):
@@ -17,7 +32,9 @@ def reg_user(request):
     else:
         form = UserRegistrationForm()
     context = {'form': form}
-    return render (request, 'registration/regist.html', context)
+    return render(request, 'registration/regist.html', context)
+
+
 def login(requst):
     if requst.method == 'POST':
         form = UserLoginForm(data=requst.POST)

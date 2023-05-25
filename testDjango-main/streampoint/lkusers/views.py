@@ -1,23 +1,12 @@
 import os
-from django.conf import settings
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from rest_framework import status
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from shop.models import AddProduct
 from streamers.models import AllStreamers
 from .forms import *
 from .models import *
-from django.views import View
-from rest_framework import views, response
-from rest_framework.authtoken.models import Token
 import json
-from django.views.decorators.csrf import ensure_csrf_cookie
-from django.http import JsonResponse
+
 
 settings_module = os.environ.get('DJANGO_SETTINGS_MODULE')
 print(settings_module)
@@ -25,14 +14,23 @@ print(settings_module)
 
 def show_profile(request):
     user_id = request.user.id
+    user = ContribUsers.objects.get(id=user_id)
     if not request.user.is_authenticated:
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        return redirect("login")
     else:
         if not request.user.groups.filter(name='Streamer'):
             streamers = HisStreamers.objects.filter(user_id=user_id)
             name1 = User.objects.filter(id=user_id)
             name = name1[0]
-            return render(request, "profile/profile.html", {"streamers": streamers, "name": name})
+            form = addPhoto_Telega(request.POST, request.FILES, instance=user)
+
+            if form.is_valid():
+                try:
+                    form.save()
+                    return redirect('Profile')
+                except:
+                    form.add_error(None, "Ошибка добавления данных")
+            return render(request, "profile/profile.html", {"streamers": streamers, "name": name, "form": form})
         else:
 
             stream_name = AllStreamers.objects.get(streamer=user_id)
@@ -116,33 +114,7 @@ def MyView(request):
     return response
 
 
-# class UserApi(APIView):
-#     authentication_classes = [TokenAuthentication]
-#     permission_classes = (IsAuthenticated,)
-#
-#     def post(self, request):
-#         user_id = request.user.id
-#         name = request.data.get("streamer")
-#         points = request.data.get("points")
-#         nameuser = request.data.get("user_id")
-#         print(name, points, user_id, nameuser)
-#         # try:
-#         #     streamers = AllStreamers.objects.get(name=name)
-#         # except:
-#         #     return Response({"error": 233})
-#         # try:
-#         #     update_points = HisStreamers.objects.get(streamers_id=streamers.id, user_id=nameuser)
-#         #     update_points.points += points
-#         #     update_points.save()
-#         # except:
-#         #     HisStreamers.objects.create(
-#         #         user_id=nameuser,
-#         #         streamers_id=streamers.id,
-#         #         points=points
-#         #     )
-#         #     sav = HisStreamers.objects.get(streamers_id=streamers.id, user_id=nameuser)
-#         #     sav.save()
-#         return Response(request.data)
+
 
 
 

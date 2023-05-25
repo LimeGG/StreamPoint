@@ -5,12 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Registration</h1>
+<h1>Registration Streamer</h1>
 
 <main>
      <form  method="post">
         {% csrf_token %}
         {{ form.as_p }}
+
         <input type="submit" value="Авторизироваться">
     </form>
 </main>
