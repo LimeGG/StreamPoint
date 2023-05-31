@@ -14,7 +14,7 @@ print(settings_module)
 
 def show_profile(request):
     user_id = request.user.id
-    user = ContribUsers.objects.get(id=user_id)
+    user = ContribUsers.objects.get(user_id=user_id)
     if not request.user.is_authenticated:
         return redirect("login")
     else:

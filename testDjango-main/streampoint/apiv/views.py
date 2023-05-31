@@ -15,7 +15,7 @@ class UserApi(APIView):
 
     def post(self, request):
         user_id = request.user.id
-        name = request.data.get("streamerName")
+        name = request.data.get("namestreamer")
         nameuser = request.user
         print(name, user_id, nameuser)
         try:

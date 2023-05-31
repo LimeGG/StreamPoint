@@ -9,7 +9,7 @@ from streamers.models import AllStreamers
 
 def reg_streamer(request):
     if request.method == 'POST':
-        form = StreamerRegistrationForm(data=request.POST)
+        form = StreamerRegistrationForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             user = form.save()
             group = Group.objects.get(name='Streamer')
