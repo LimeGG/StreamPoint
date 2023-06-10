@@ -1,19 +1,61 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'main/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'registration/css/reg.css' %}">
 </head>
-<body>
-<h1>Registration</h1>
 
-<main>
-     <form  method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Авторизироваться">
-    </form>
-</main>
+<body>
+
+
+    <header class="header">
+        <div class="header-info">
+            <div class="logo">
+                <img src="{% static 'main/imgs/logo.png' %}">
+            </div>
+            <div class="title">
+                <h1>STREAM POINTS</h1>
+                <p>Магазины ваших любимых стримеров</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <form method="post" class="reg-form">
+            {% csrf_token %}
+            <label for="">
+                <p>НИК</p>
+                {{ form.username }}
+            </label>
+
+            <label for="">
+                <p>EMAIL</p>
+                {{ form.email }}
+            </label>
+            <label for="">
+                <p>ПАРОЛЬ</p>
+                {{ form.password1 }}
+            </label>
+
+            <label for="">
+                <p> ПОВТОРИТЕ ПАРОЛЬ </p>
+                {{ form.password2 }}
+            </label>
+
+            <button type="submit" class="create-acc">СОЗДАТЬ АККАУНТ</button>
+        </form>
+
+        <footer class="footer">
+            <img src="{% static 'main/imgs/hive.png' %}">
+        </footer>
+    </main>
 
 </body>
+
 </html>

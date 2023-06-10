@@ -1,19 +1,53 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'main/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'registration/css/reg.css' %}">
 </head>
+
 <body>
-<main>
+    <main>
+        <header class="header">
+            <div class="header-info">
+                <div class="logo">
+                    <img src="{% static 'main/imgs/logo.png' %}">
+                </div>
+                <div class="title">
+                    <h1>STREAM POINTS</h1>
+                    <p>Магазины ваших любимых стримеров</p>
+                </div>
+            </div>
+        </header>
 
-    <form  method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Авьлоизоваться">
-    </form>
+        <main class="main">
+            <form method="post" class="reg-form">
+                {% csrf_token %}
+                <label for="">
+                    <p>НИК</p>
+                    {{ form.username }}
+                </label>
+                <label for="">
+                    <p>ПАРОЛЬ</p>
+                    {{ form.password }}
+                </label>
+                <button type="submit" class="create-acc">ВОЙТИ</button>
+            </form>
 
-</main>
+
+            
+        <footer class="footer">
+            <img src="{% static 'main/imgs/hive.png' %}">
+        </footer>
+        </main>
+
+    </main>
 
 </body>
+
 </html>

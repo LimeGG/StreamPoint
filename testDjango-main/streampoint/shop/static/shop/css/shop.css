@@ -1,0 +1,65 @@
+
+.shop-streamer {
+    margin-top: 20px;
+}
+
+.goods-list {
+    margin-top: 130px;
+    margin-bottom: 100px;
+    display: flex;
+}
+
+.good {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.good-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shop-coins {
+    border: 1px solid #fff;
+
+    border-radius: 15px;
+    color: #fff;
+    font-size: 15px;
+
+    margin-top: 20px;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-price {
+    margin-left: 10px;
+}
+
+.coin {
+    width: 30px;
+    height: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.btn-buy {
+    border: 1px solid #fff;
+    background: none;
+    padding: 5px 20px;
+    margin-top: 15px;
+    /* margin-right: 15px; */
+   
+  
+    width: 140px;
+
+    border-radius: 30px;
+
+    color: #fff;
+    font-size: 15px;
+
+}

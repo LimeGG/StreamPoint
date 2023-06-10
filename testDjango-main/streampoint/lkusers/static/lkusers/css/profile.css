@@ -1,0 +1,193 @@
+body {
+    background: url('../imgs/bg.png') no-repeat;
+    background-size: cover;
+}
+
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 55px;
+    margin-right: 40px;
+}
+
+
+
+.profile-icon img {
+    width: 110px;
+    height: 115px;
+}
+
+.profile-name {
+    color: #fff;
+    font-size: 18px;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-statics {
+    display: flex;
+    margin-top: 100px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    width: 650px;
+    background: linear-gradient(to right, rgba(157, 80, 187, 1), rgba(110, 72, 170, 1) 90%);
+    border-radius: 30px;
+    color: #fff;
+}
+
+
+.profile-statics-icon {
+    display: flex;
+    align-items: center;
+}
+
+.name-coins {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-statics-details {
+    margin-left: 40px;
+}
+
+.name-coins h3 {
+    margin-right: 10px;
+}
+
+.name-coins p {
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    border-radius: 30px;
+    position: relative;
+}
+
+
+
+.name-coins p::after {
+    content: '';
+    position: absolute;
+    left: 79px;
+    top: -5px;
+    background: url('../imgs/logo.png') no-repeat;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+}
+
+.profile-statics-icon img {
+    width: 110px;
+    height: 115px;
+
+}
+
+.profile-statics-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.set img,
+.full img {
+    width: 25px;
+    cursor: pointer;
+}
+
+/* PROFILE NVBAR */
+
+.profile-nav {
+    display: flex;
+    margin-top: 80px;
+}
+
+.profile-nav a {
+    border: 1px solid #fff;
+    display: block;
+    padding: 5px 20px;
+    margin-right: 15px;
+    width: 200px;
+
+    border-radius: 30px;
+
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* WATCH HISTORY / ACHIVE */
+
+.watch-streamers {
+    margin-top: 200px;
+}
+
+.streamer-title h1, .achive-title h1 {
+    text-align: center;
+    color: #fff;
+}
+
+.achive {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.achive-list {
+    height: 140px !important;
+    justify-content: space-evenly !important;
+    align-items: center;
+}
+
+.watch-streamers-list, .achive-list {
+    background: linear-gradient(to right, rgba(157, 80, 187, 1), rgba(110, 72, 170, 1) 90%);
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    display: flex;
+    justify-content: space-around;
+    height: 110px;
+    width: 1350px;
+    margin-top: 150px;
+}
+
+.wstreamer-photo, .achive-photo {
+    margin-top: -45px;
+}
+
+.achive-photo {
+    margin-top: 10px !important;
+}
+
+.achive-photo img {
+    height: 120px !important;
+}
+
+.wstreamer-photo h1 {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.wstreamer-photo img, .achive-photo img {
+    height: 200px;
+    width: 100%;
+
+    border-radius: 50%;
+}
+
+.arrow-right img, .arrow-left img {
+    height: 60px;
+    cursor: pointer;
+}

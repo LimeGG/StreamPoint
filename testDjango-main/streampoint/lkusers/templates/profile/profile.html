@@ -1,46 +1,160 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Profilee</title>
-    <style>
-        .point{
-            border-top: 4px solid #648880;
-            padding: 40px 0 22px 0;
-            float: left;
-        }
-       ul.hr {
-        /* Обнуляем значение отступов и полей */
-        margin: 0; padding: 0;
-       }
-       ul.hr li {
-        display: inline-block; /* Строчно-блочный элемент */
-        border: 1px solid #000; /* Рамка вокруг текста */
-        padding: 3px; /* Поля вокруг текста */
-       }
-    </style>
+    <link rel="stylesheet" href="{% static 'main/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'lkusers/css/profile.css' %}">
 </head>
+
 <body>
-        <h1>Profileee</h1>
-        <center><h2>{{ name.username }}</h2></center>
-        <center>
-       <form method="post", enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Отправить</button>
-        </center>
 
 
-        <ul class="hr">
-            {% for i in streamers %}
-            <li>
-                <h2>{{i.streamers.name}}</h2>
-                <h2>{{i.streamers.urltwitch}}</h2>
-                <img src="{{i.streamers.photo.url}}" width="100" height="100">
-                <h2>{{i.points}}</h2>
-                <button><a href="/">Купить</a></button></p>
-            </li>
-            {% endfor %}
+    <header class="header">
+        <div class="header-info">
+            <div class="logo">
+                <img src="{% static 'main/imgs/logo.png' %}">
+            </div>
+            <div class="title">
+                <h1>STREAM POINTS</h1>
+                <p>Магазины ваших любимых стримеров</p>
+            </div>
+
+            <ul class="header-navbar">
+                <a href="/">Главная</a>
+                <a href="shop/">магазин</a>
+                <a href="streamers/">стримеры</a>
+            </ul>
+        </div>
+
+        <div class="profile">
+            <div class="profile-icon">
+                <img src="{% static 'lkusers/imgs/zloy.png' %}">
+            </div>
+            <div class="profile-info">
+                <div class="profile-signout">
+                    <img src="{% static 'lkusers/imgs/out.png' %}">
+                </div>
+                <div class="profile-name">
+                    <p>Asd</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-profile">
+        <div class="profile-statics">
+            <div class="profile-statics-icon">
+                <img src="{% static 'lkusers/imgs/zloy.png' %}">
+                <div class="profile-statics-details">
+                    <div class="name-coins">
+                        <h3>Addict</h3>
+                        <p>10.3K</p>
+                    </div>
+                    <div class="role">
+                        <p>ПОЛЬЗОВАТЕЛЬ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-settings">
+                <div class="set">
+                    <img src="{% static 'lkusers/imgs/set.png' %}">
+                </div>
+                <div class="full">
+                    <img src="{% static 'lkusers/imgs/full.png' %}">
+                </div>
+            </div>
+        </div>
+
+
+
+        <ul class="profile-nav">
+            <a href="lkusers/">ПОДПИСКИ</a>
+            <a href="shop/">ПОКУПКИ</a>
+            <a href="#">РЕФ.СИСТЕМА</a>
         </ul>
+
+
+        <div class="watch-history">
+            <div class="watch-streamers">
+                <div class="streamer-title">
+                    <h1>ИСТОРИЯ ПРОСМОТРА</h1>
+                </div>
+                <div class="watch-streamers-list">
+                    <div class="wstreamer-photo">
+                        <img src="{% static 'main/imgs/f2.png' %}">
+                        <h1>EVELONE</h1>
+                    </div>
+                    <div class="wstreamer-photo">
+                        <img src="{% static 'main/imgs/evel.png' %}">
+                        <h1>EVELONE</h1>
+                    </div>
+                    <div class="wstreamer-photo">
+                        <img src="{% static 'main/imgs/zloy.png' %}">
+                        <h1>EVELONE</h1>
+                    </div>
+                    <div class="wstreamer-photo">
+                        <img src="{% static 'main/imgs/zloy.png' %}">
+                        <h1>EVELONE</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="achive">
+          
+            <div class="watch-streamers">
+                <div class="achive-title">
+                    <h1>МОИ ДОСТИЖЕНИЯ</h1>
+                </div>
+                <div class="achive-list">
+                    <div class="arrow-left">
+                        <img src="{% static 'lkusers/imgs/arr-l.png' %}">
+                    </div>
+                    <div class="achive-photo">
+                        <img src="{% static 'lkusers/imgs/achive.png' %}">
+                    </div>
+                    <div class="achive-photo">
+                        <img src="{% static 'lkusers/imgs/achive.png' %}">
+                    </div>
+                    <div class="achive-photo">
+                        <img src="{% static 'lkusers/imgs/achive.png' %}">
+                    </div>
+                    <div class="achive-photo">
+                        <img src="{% static 'lkusers/imgs/achive.png' %}">
+                    </div>
+                    <div class="arrow-right">
+                        <img src="{% static 'lkusers/imgs/arr-r.png' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <footer class="footer">
+            <img src="{% static 'main/imgs/hive.png' %}">
+        </footer>
+    </main>
+
+
+    <!-- 
+    <ul class="hr">
+        {% for i in streamers %}
+        <li>
+            <h2>{{i.streamers.name}}</h2>
+            <h2>{{i.streamers.urltwitch}}</h2>
+            <img src="{{i.streamers.photo.url}}" width="100" height="100">
+            <h2>{{i.points}}</h2>
+            <button><a href="/">Купить</a></button></p>
+        </li>
+        {% endfor %}
+    </ul> -->
 </body>
+
 </html>

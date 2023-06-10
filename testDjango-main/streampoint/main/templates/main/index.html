@@ -1,18 +1,122 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/topstreamers.css' %}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-<h1>Главная страница</h1>
-<button><a href="lkusers/">Профиль</a></button></p>
-<button><a href="shop/">магазин</a></button></p>
-<button><a href="streamers/">Наши стримеры</a></button></p>
-<button><a href="registration/">Регистрация</a></button></p>
-<button><a href="registration/login/">Логин</a></button></p>
+
+    <header class="header">
+        <div class="header-info">
+            <div class="logo">
+                <img src="{% static 'main/imgs/logo.png' %}">
+            </div>
+            <div class="title">
+                <h1>STREAM POINTS</h1>
+                <p>Магазины ваших любимых стримеров</p>
+            </div>
+
+            <ul class="header-navbar">
+                <a href="lkusers/">Профиль</a>
+                <a href="shop/">магазин</a>
+                <a href="streamers/">стримеры</a>
+            </ul>
+        </div>
+
+        <div class="log-reg">
+            <a href="registration/login/" class="login">Войти</a>
+            <a href="registration/" class="reg">Регистрация</a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="about">
+            <div class="about-title">
+                <h1>О СЕРВИСЕ</h1>
+            </div>
+            <div class="about-desc">
+                <p>
+                    StreamPoints - Сервис онлайн магазинов. В которых вы можете приобретать товары стримера за баллы.
+                    Баллы начисляются за просмотр стримов!
+                </p>
+            </div>
+        </div>
+
+        <div class="parth">
+            <div class="parth-title">
+                <h1>НАШИ ПАРТНЕРЫ</h1>
+            </div>
+            <div class="parths">
+                <div class="parth-photo">
+                    <img src="{% static 'main/imgs/f2.png' %}">
+                    <h1>EVELONE</h1>
+                </div>
+                <div class="parth-photo">
+                    <img src="{% static 'main/imgs/evel.png' %}">
+                    <h1>EVELONE</h1>
+                </div>
+                <div class="parth-photo">
+                    <img src="{% static 'main/imgs/zloy.png' %}">
+                    <h1>EVELONE</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-top">
+            <div class="streamers-title">
+                <h1>ТОП СЕРВИСА</h1>
+            </div>
+
+            <div class="streamers">
+                {% for el in hs %}
+                <div class="streamer-icon">
+                    <p class="name">{{el.streamers.name}}</p>
+                    <img src='{{el.streamers.photo.url}}'>
+                    <a class="streamers-subscribe" href="{{el.streamers.urltwitch}}">Подписаться</a>
+                    <p class="streamer-followers">{{el.user_count}} Фолловеров</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="form-connect">
+            <div class="form-coonect-title">
+                <h1 class="form-connect-t1">ОСТАВИТЬ ЗАЯВКУ</h1>
+                <h1> НА ПОДКЛЮЧЕНИЕ К СЕРВИСУ</h1>
+            </div>
+            <form action="" class="connect-form">
+                <label for="">
+                    <h2>EMAIL</h2>
+                    <input type="text">
+                </label>
+                <label for="">
+                    <h2>НИК</h2>
+                    <input type="text">
+                </label>
+                <a href="#" class="form-btn">
+                    ОТПРАВИТЬ
+                </a>
+            </form>
+        </div>
+        
+        <footer class="footer">
+            <img src="{% static 'main/imgs/hive.png' %}">
+        </footer>
+
+       
+    </main>
+ 
 </body>
+
 </html>
