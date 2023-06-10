@@ -1,5 +1,5 @@
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('', views.stream),
+    path('', views.stream, name = "Allstream"),
 ]
