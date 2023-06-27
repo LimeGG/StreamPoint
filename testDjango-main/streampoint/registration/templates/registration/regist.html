@@ -48,6 +48,11 @@
                 {{ form.password2 }}
             </label>
 
+              {% csrf_token %}
+              <label for="referral_code">Referral Code:</label>
+              <input type="text" name="referral_code" id="referral_code">
+
+
             <button type="submit" class="create-acc">СОЗДАТЬ АККАУНТ</button>
         </form>
 

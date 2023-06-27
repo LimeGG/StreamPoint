@@ -5,6 +5,7 @@ from django.urls import reverse
 from .forms import UserRegistrationForm, StreamerRegistrationForm, UserLoginForm
 from django.contrib.auth.models import Group
 from streamers.models import AllStreamers
+from lkusers.models import  ContribUsers
 
 
 def reg_streamer(request):
@@ -27,6 +28,15 @@ def reg_user(request):
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
+            referral_code = request.POST.get('referral_code')
+            referred_user = request.user
+            try:
+                contrib_user = ContribUsers.objects.get(referral_name=referral_code)
+                contrib_user.referral_name = referred_user
+                contrib_user.save()
+                print("Всё хорошо пользователь найден")
+            except User.DoesNotExist:
+                pass
             form.save()
             return redirect('login/')
     else:
