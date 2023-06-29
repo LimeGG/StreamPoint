@@ -1,10 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<!-- <div class="background">
-  <img src="{% static 'streamers/img/back.png' %}" alt="background" />
-</div> -->
-
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -54,15 +50,7 @@
     </header>
 
 
-    <!-- <main>
-            <span class = "logost" >Топ стримеров платформы</span>
-            {% for el in jpg %}
-            <p><img src = '{{el.photo.url}} 'width="100" height="100"><button><a href="{{el.urltwitch}}">Подписаться</a></button></p>
-            <p class="name">{{el.name}}</p>
-            {% endfor %}
 
-        </main>
-         <img src="{% static 'streamers/img/back.png' %}" class="background" /> -->
 
 
     <main class="main">
@@ -75,7 +63,7 @@
                     <div class="parth-photo streamers-plat-list">
                         <img src="{{el.photo.url}}">
                         <h1>{{ el.name }}</h1>
-                        <a href="{{el.urltwitch}}" class="streamers-shop">Магазин</a>
+                        <a href="/shop/{{el.id}}" class="streamers-shop">Магазин</a>
                     </div>
                 {% endfor %}
             </div>
