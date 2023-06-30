@@ -12,7 +12,11 @@ class ContribUsers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     photouser = models.ImageField("Фото пользователя", upload_to="photousers/", null=True, blank=True)
     telegramm = models.CharField("телегарм", max_length=200, help_text="Телеграм пользователя")
+<<<<<<< Updated upstream
     ref = models.IntegerField("Рефералы", blank=True, null=True)
+=======
+    referral_name = models.CharField(max_length=50, blank=True, null=True)
+>>>>>>> Stashed changes
 
     class Meta:
         verbose_name = "Пользователь"

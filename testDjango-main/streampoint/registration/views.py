@@ -5,6 +5,11 @@ from django.urls import reverse
 from .forms import UserRegistrationForm, StreamerRegistrationForm, UserLoginForm
 from django.contrib.auth.models import Group
 from streamers.models import AllStreamers
+<<<<<<< Updated upstream
+=======
+from lkusers.models import ContribUsers
+from django.core.exceptions import ObjectDoesNotExist
+>>>>>>> Stashed changes
 
 
 def reg_streamer(request):
@@ -27,6 +32,19 @@ def reg_user(request):
     if request.method == 'POST':
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
+<<<<<<< Updated upstream
+=======
+            referral_code = request.POST.get('referral_code')
+            referred_user = request.user
+            try:
+                contrib_user = User.objects.get(referral_name=referral_code)
+                contrib_user.referral_name = referred_user
+                contrib_user.save()
+                print("Всё хорошо пользователь найден")
+            except ObjectDoesNotExist:
+                pass
+                print("Ничего не работает")
+>>>>>>> Stashed changes
             form.save()
             return redirect('login/')
     else:
