@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
@@ -25,6 +24,7 @@ class ContribUsers(models.Model):
     def __str__(self):
         return str(self.user)
 
+
 class Allachievements(models.Model):
     name = models.CharField("Имя", max_length=200)
     imagelogo = models.ImageField("Фото достижения", upload_to="photooachivment/", null=True, blank=True)
@@ -38,9 +38,10 @@ class Allachievements(models.Model):
     def __str__(self):
         return str(self.name)
 
+
 class Achievements(models.Model):
     achievement = models.ForeignKey(Allachievements, on_delete=models.CASCADE, blank=True, null=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         verbose_name = "достижения пользователя"
@@ -50,12 +51,11 @@ class Achievements(models.Model):
     #     return str(self.achievement)
 
 
-
-
 class HisStreamers(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     points = models.IntegerField("Очки за блогера", blank=True, null=True, default=0)
     streamers = models.ForeignKey(AllStreamers, on_delete=models.CASCADE, blank=True, null=True)
+
 
     class Meta:
         verbose_name = "Стримеры пользователя"
